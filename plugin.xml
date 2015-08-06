@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2015 Jihyun Lee. All rights reserved. -->
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="com.hellojihyun.cordova.plugin.ThinkGear"
+    version="1.0.0">
+
+    <name>ThinkGear Plugin for Cordova iOS</name>
+    <description>ThinkGear</description>
+    <license>Apache 2.0</license>
+    <keywords>ThinkGear, Neurosky</keywords>	
+    
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+	
+    <asset src="www/ThinkGear.js" target="plugins/ThinkGear.js" />
+
+	<js-module src="www/ThinkGear.js" name="ThinkGear">
+    	<clobbers target="window.ThinkGear" />
+	</js-module>
+	
+    <!-- ios -->
+    <platform name="ios">
+        <!-- feature tag in config.xml -->
+        <config-file target="config.xml" parent="/widget">
+          <feature name="ThinkGear">
+            <param name="ios-package" value="CDVThinkGear"/>
+          </feature>
+        </config-file>
+        
+        <header-file src="src/ios/CDVThinkGear.h" />
+        <source-file src="src/ios/CDVThinkGear.m"/>
+        
+        <header-file src="src/ios/ThinkGear/TGAccessoryDelegate.h" />
+        <header-file src="src/ios/ThinkGear/TGAccessoryManager.h" />
+        <source-file src="src/ios/ThinkGear/libTGAccessory.a" framework="true" />
+
+        <!-- frameworks -->
+        <framework src="Accelerate.framework" />
+        <framework src="ExternalAccessory.framework" />
+        <framework src="Foundation.framework" />
+        <framework src="QuartzCore.framework" />
+        <framework src="UIKit.framework" />
+
+        <framework src="libTGAccessory.a" />
+    </platform>
+</plugin>
